@@ -5,40 +5,18 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <!-- saved from url=(0014)about:internet -->
 <title>测试</title>
-<style>
-*{margin:0;padding:0;-webkit-user-select:none;font-family:"Microsoft YaHei";}
-html,body{width:100%;height:100%;overflow: hidden;}
-canvas{box-shadow: 0 0 0 1px red;}
-</style>
+<link href="css/style.css" rel="stylesheet" />
 </head>
 
 <body>
-	<canvas width="500" height="300"></canvas>
+	<div class="demo">
+
+	</div>
 </body>
 </html>
 <script>
 window.onload = function () {
-	//图表类型
-	//数据类型
-	//标尺
-	//颜色?
-	var data = {
-		"七月": .4,
-		"八月": .5,
-		"九月": .6
-	},
-	goldRatio = (Math.sqrt(5) - 1) / 2;
-	var canvas = document.querySelector("canvas"),
-		W = canvas.width,
-		H = canvas.height,
-		pen = canvas.getContext("2d");
-		//console.log();
-		for(var i = 0;i < Object.keys(data).length;i++) {
-			pen.beginPath();
-			pen.fillStyle = "orange";
-			pen.fillRect(i * (W/3) - 0.5,H * (1 - data[Object.keys(data)[i]]) - 0.5,W/6 + 0.5,300 + 0.5);
-			pen.fill();
-		}
+
 }
 </script>
 
