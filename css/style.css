@@ -3,4 +3,5 @@
 html{font-size: 62.5%;}
 body{padding: 8px;}
 
-.demo{width: 30rem;height: 30rem;background-color: orange;border-radius: 4px;}
+.demo{width: 30rem;height: 30rem;background-color: orange;border-radius: 4px;transition:all .4s;}
+.demo:hover{width: 29rem;height: 29rem;background-color: blue;border-radius: 50%;}
