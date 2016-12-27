@@ -1,0 +1,24 @@
+{
+  "name": "git-practice",
+  "version": "1.0.0",
+  "description": "whatever",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomo-rrrr/git-practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomo-rrrr/git-practice/issues"
+  },
+  "homepage": "https://github.com/tomo-rrrr/git-practice#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.3.2",
+    "gulp-uglify": "^2.0.0"
+  }
+}
