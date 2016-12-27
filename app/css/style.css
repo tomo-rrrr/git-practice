@@ -4,4 +4,4 @@ html{font-size: 62.5%;}
 body{padding: 8px;}
 [v-cloak]{visibility: hidden;}
 
-#demo h1{font-size: 3rem;margin: 0px;border-width: 0px;transform: scale(1) skew(0) translateX(0);}
+#demo h1{font-size: 3rem;}
