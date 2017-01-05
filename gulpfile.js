@@ -1,8 +1,9 @@
-const gulp     = require("gulp"),
-      uglify   = require("gulp-uglify"),
-      cleanCss = require("gulp-clean-css"),
-      minHtml  = require("gulp-htmlmin"),
-      imgOptim = require("gulp-imageoptim");
+const gulp     = require("gulp");
+const uglify   = require("gulp-uglify");
+const cleanCss = require("gulp-clean-css");
+const minHtml  = require("gulp-htmlmin");
+const imgOptim = require("gulp-imageoptim");
+const babel    = require("gulp-babel");
 
     //默认任务
     gulp.task("default", ["minify-htm", "minify-css", "minify-js"]);
@@ -38,4 +39,11 @@ const gulp     = require("gulp"),
         gulp.src("app/images/*")
             .pipe(imgOptim.optimize())
             .pipe(gulp.dest("dist/images"));
+    })
+
+    //es6 -> es5
+    gulp.task("babel", function () {
+        gulp.src("app/js/es6.js")
+            .pipe(babel())
+            .pipe(gulp.dest("dist/js"));
     })
