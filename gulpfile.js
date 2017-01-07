@@ -5,19 +5,18 @@ const minHtml  = require("gulp-htmlmin");
 const imgOptim = require("gulp-imageoptim");
 const babel    = require("gulp-babel");
 const inject   = require("gulp-inject");
-const rev  = require("gulp-rev-append");
 
     //默认任务
-    gulp.task("default", ["minify-htm", "minify-css", "babel", "noCache"]);
+    gulp.task("default", ["minify-htm", "minify-css", "minify-js", "babel"]);
 
-    //压缩js
+    //压缩js                           √
     gulp.task("minify-js", function () {
-        gulp.src("app/js/*.js")
+        gulp.src(["app/js/vue.js", "app/js/main.js"])
             .pipe(uglify())
             .pipe(gulp.dest("dist/js"));
     })
 
-    //压缩css
+    //压缩css                           √
     gulp.task("minify-css", function () {
         gulp.src("app/css/*.css")
             .pipe(cleanCss({
@@ -26,7 +25,7 @@ const rev  = require("gulp-rev-append");
             .pipe(gulp.dest("dist/css"));
     })
 
-    //压缩html
+    //压缩html                           √
     gulp.task("minify-htm", function () {
         gulp.src("app/*.html")
             .pipe(minHtml({
@@ -43,28 +42,10 @@ const rev  = require("gulp-rev-append");
             .pipe(gulp.dest("dist/images"));
     })
 
-    //es6 -> es5
+    //es6 -> es5                   √
     gulp.task("babel", function () {
         gulp.src("app/js/es6.js")
             .pipe(babel())
+            .pipe(uglify())
             .pipe(gulp.dest("dist/js"));
-    })
-
-    //自动引入文件
-    /*gulp.task("inject", function () {
-        var injectPath = gulp.src(
-            ['app/css/*.css', 'app/js/*.js'], 
-            {read: false},
-            {ignorePath: "app"}
-        );
-        gulp.src("./app/html/index.html")
-            .pipe(inject( injectPath ))
-            .pipe(gulp.dest("./app"))
-    })*/
-
-    //禁止缓存
-    gulp.task("noCache", function () {
-        gulp.src("app/index.html")
-        .pipe(rev())
-        .pipe(gulp.dest("dist"));
     })
