@@ -10,14 +10,14 @@ const inject   = require("gulp-inject");
     gulp.task("default", ["minify-htm", "minify-css", "minify-js", "babel"]);
 
     //压缩js                           √
-    gulp.task("minify-js", function () {
+    gulp.task("minify-js", () => {
         gulp.src(["app/js/vue.js", "app/js/main.js"])
             .pipe(uglify())
             .pipe(gulp.dest("dist/js"));
     })
 
     //压缩css                           √
-    gulp.task("minify-css", function () {
+    gulp.task("minify-css", () => {
         gulp.src("app/css/*.css")
             .pipe(cleanCss({
                 compatibility: "ie9,+properties.zeroUnits"
@@ -26,7 +26,7 @@ const inject   = require("gulp-inject");
     })
 
     //压缩html                           √
-    gulp.task("minify-htm", function () {
+    gulp.task("minify-htm", () => {
         gulp.src("app/*.html")
             .pipe(minHtml({
                 collapseBooleanAttributes: true,
@@ -36,14 +36,14 @@ const inject   = require("gulp-inject");
     })
 
     //压缩图片
-    gulp.task("minify-img", function () {
+    gulp.task("minify-img", () => {
         gulp.src("app/images/*")
             .pipe(imgOptim.optimize())
             .pipe(gulp.dest("dist/images"));
     })
 
     //es6 -> es5                   √
-    gulp.task("babel", function () {
+    gulp.task("babel", () => {
         gulp.src("app/js/es6.js")
             .pipe(babel())
             .pipe(uglify())
