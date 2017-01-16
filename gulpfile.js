@@ -5,10 +5,18 @@ const minHtml  = require("gulp-htmlmin");
 const imgOptim = require("gulp-imageoptim");
 const babel    = require("gulp-babel");
 const inject   = require("gulp-inject");
-const rev  = require("gulp-rev-append");
+const del      = require("del");
 
     //默认任务
-    gulp.task("default", ["minify-htm", "minify-css", "babel", "noCache"]);
+    gulp.task("default", ["del","minify-htm", "minify-css", "babel"]);
+
+
+    //清除dist目录
+    gulp.task("del", function () {
+        del(["dist/**"]).then(function (paths) {
+            console.log(paths);
+        })   
+    })
 
     //压缩js
     gulp.task("minify-js", function () {
@@ -45,7 +53,7 @@ const rev  = require("gulp-rev-append");
 
     //es6 -> es5
     gulp.task("babel", function () {
-        gulp.src("app/js/es6.js")
+        gulp.src("app/js/*.js")
             .pipe(babel())
             .pipe(gulp.dest("dist/js"));
     })
@@ -61,10 +69,3 @@ const rev  = require("gulp-rev-append");
             .pipe(inject( injectPath ))
             .pipe(gulp.dest("./app"))
     })*/
-
-    //禁止缓存
-    gulp.task("noCache", function () {
-        gulp.src("app/index.html")
-        .pipe(rev())
-        .pipe(gulp.dest("dist"));
-    })

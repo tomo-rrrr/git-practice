@@ -26,5 +26,8 @@
     "gulp-inject": "^4.2.0",
     "gulp-rev-append": "^0.1.7",
     "gulp-uglify": "^2.0.0"
+  },
+  "dependencies": {
+    "del": "^2.2.2"
   }
 }

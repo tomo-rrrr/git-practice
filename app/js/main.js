@@ -1,7 +1,2 @@
-var demo = new Vue({
-        el: "#demo",
-        data: {
-            woo: 13333,
-            doo: 10000
-        }
-    })
+import * as math from "es6";
+console.log(math.pa);
