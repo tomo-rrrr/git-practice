@@ -18,14 +18,17 @@ const del      = require("del");
         })   
     })
 
-    //压缩js
+    //默认任务
+    gulp.task("default", ["minify-htm", "minify-css", "minify-js", "babel"]);
+
+    //压缩js                           √
     gulp.task("minify-js", function () {
-        gulp.src("app/js/*.js")
+        gulp.src(["app/js/vue.js", "app/js/main.js"])
             .pipe(uglify())
             .pipe(gulp.dest("dist/js"));
     })
 
-    //压缩css
+    //压缩css                           √
     gulp.task("minify-css", function () {
         gulp.src("app/css/*.css")
             .pipe(cleanCss({
@@ -34,7 +37,7 @@ const del      = require("del");
             .pipe(gulp.dest("dist/css"));
     })
 
-    //压缩html
+    //压缩html                           √
     gulp.task("minify-htm", function () {
         gulp.src("app/*.html")
             .pipe(minHtml({
@@ -51,21 +54,12 @@ const del      = require("del");
             .pipe(gulp.dest("dist/images"));
     })
 
-    //es6 -> es5
+    //es6 -> es5                   √
     gulp.task("babel", function () {
         gulp.src("app/js/*.js")
             .pipe(babel())
+            .pipe(uglify())
             .pipe(gulp.dest("dist/js"));
     })
 
-    //自动引入文件
-    /*gulp.task("inject", function () {
-        var injectPath = gulp.src(
-            ['app/css/*.css', 'app/js/*.js'], 
-            {read: false},
-            {ignorePath: "app"}
-        );
-        gulp.src("./app/html/index.html")
-            .pipe(inject( injectPath ))
-            .pipe(gulp.dest("./app"))
-    })*/
+
