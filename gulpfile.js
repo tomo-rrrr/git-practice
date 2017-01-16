@@ -16,10 +16,7 @@ const del      = require("del");
         del(["dist/**"]).then(function (paths) {
             console.log(paths);
         })   
-    })
-
-    //默认任务
-    gulp.task("default", ["minify-htm", "minify-css", "minify-js", "babel"]);
+    });
 
     //压缩js                           √
     gulp.task("minify-js", function () {
